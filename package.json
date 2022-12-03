@@ -1,0 +1,10 @@
+{
+  "name": "forum",
+  "version": "0.0.0",
+  "repository": "https://github.com/Laurenz1606/forum.git",
+  "author": "Laurenz1606 <laurenz1606 <laurenz.rausche@gmail.com>>",
+  "license": "MIT",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {}
+}
