@@ -5,9 +5,12 @@
   "author": "Laurenz1606 <laurenz1606 <laurenz.rausche@gmail.com>>",
   "license": "MIT",
   "scripts": {
-    "format:full": "cd backend && npm run dev:format && cd ..",
+    "format:backend": "cd backend && npm run dev:format",
+    "format:frontend": "cd frontend && npm run dev:format",
+    "format:full": "npm run format:backend && npm run format:frontend",
     "build:backend": "cd backend && npm run build:full",
-    "build:full": "npm run build:clean && npm run build:backend",
+    "build:frontend": "cd frontend && npm run build:full",
+    "build:full": "npm run build:clean && npm run build:backend && npm run build:frontend",
     "build:clean": "rimraf bundle",
     "dev:remove-packages": "rimraf node_modules yarn.lock package-lock.json"
   },
