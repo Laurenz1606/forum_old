@@ -6,8 +6,8 @@
   "license": "MIT",
   "scripts": {
     "build:compile": "npm run dev:format && npm run build:clean && react-scripts build",
-    "build:clean": "rimraf build",
     "build:copy": "rimraf ../bundle/frontend/* && recursive-copy build ../bundle/frontend/build && recursive-copy serve/index.js ../bundle/frontend/index.js && recursive-copy serve/package.json ../bundle/frontend/package.json",
+    "build:clean": "rimraf build",
     "build:full": "npm run build:compile && npm run build:copy && npm run build:clean",
     "dev:start": "cross-env NODE_ENV=development BROWSER=none react-scripts start",
     "dev:format": "prettier --write --config ../.prettierrc.json src",

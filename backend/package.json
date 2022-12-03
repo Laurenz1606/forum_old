@@ -7,8 +7,8 @@
   "license": "MIT",
   "scripts": {
     "build:compile": "npm run dev:format && npm run build:clean && tsc",
-    "build:clean": "rimraf dist",
     "build:copy": "rimraf ../bundle/backend/* && recursive-copy dist ../bundle/backend/dist && recursive-copy package.json ../bundle/backend/package.json",
+    "build:clean": "rimraf dist",
     "build:full": "npm run build:compile && npm run build:copy && npm run build:clean",
     "dev:start": "cross-env NODE_ENV=development ts-node-dev --require=dotenv/config --respawn --watch .env src/index.ts",
     "dev:format": "prettier --write --config ../.prettierrc.json src",
