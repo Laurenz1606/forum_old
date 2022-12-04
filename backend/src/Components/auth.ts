@@ -12,4 +12,4 @@ export const auth = new AuthInstance({
 });
 
 //use the logger
-auth.logger((level, message) => logger.log(level, message))
+auth.logger((level, message) => logger.log(level, message));
