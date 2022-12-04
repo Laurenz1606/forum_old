@@ -15,7 +15,10 @@
     "dev:remove-packages": "rimraf node_modules yarn.lock package-lock.json",
     "start": "node ."
   },
-  "dependencies": {},
+  "dependencies": {
+    "@laurenz1606/logger": "^3.2.1",
+    "mongoose": "^6.7.5"
+  },
   "devDependencies": {
     "@types/node": "^18.11.10",
     "cross-env": "^7.0.3",
