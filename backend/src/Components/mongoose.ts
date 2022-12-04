@@ -14,3 +14,6 @@ export const mongooseConnection = createConnection(
     logger.info("Mongoose: Create connection to MongoDB!");
   },
 );
+
+//log that mongoose connection was created
+logger.debug("Mongoose: Connection created!")
