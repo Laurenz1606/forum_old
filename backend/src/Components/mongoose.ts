@@ -4,7 +4,7 @@ import { logger } from "./logger";
 
 //create new mongoose connection
 export const mongooseConnection = createConnection(
-  env("MONGODB_URL", true) as string,
+  env("MONGODB_URL", true),
   {},
   (err) => {
     //log all errors occuring (prefere error stack else error message)
