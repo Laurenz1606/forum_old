@@ -1,7 +1,11 @@
 import { logger } from "../Components/logger";
 
 //env wrapper function
-export function env(name: string, required?: boolean, fallback?: string) {
+export function env(
+  name: string,
+  required?: boolean,
+  fallback?: string,
+): string | undefined {
   //check if env is set
   const isSet = process.env[name] !== undefined;
 
@@ -23,4 +27,7 @@ export function env(name: string, required?: boolean, fallback?: string) {
       `ENV-Var "${name}" is not set, required but uses fallback value of "${fallback}"!`,
     );
   }
+
+  //return env when set else return fallback
+  return isSet ? process.env[name] : fallback;
 }
