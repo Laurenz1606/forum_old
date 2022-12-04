@@ -1,11 +1,20 @@
 import { logger } from "../Components/logger";
 
-//env wrapper function
+//defined overloads
+export function env(name: string, required: true, fallback?: string): string;
+export function env(
+  name: string,
+  required: boolean | undefined,
+  fallback: string,
+): string;
 export function env(
   name: string,
   required?: boolean,
   fallback?: string,
-): string | undefined {
+): string | undefined;
+
+//env wrapper function
+export function env(name: string, required?: boolean, fallback?: string) {
   //check if env is set
   const isSet = process.env[name] !== undefined;
 
