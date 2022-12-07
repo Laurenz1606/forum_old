@@ -2,6 +2,7 @@ import { AuthInstance } from "@authfunctions/express";
 import { UserModel } from "../Models/UserModel";
 import { env } from "../Utils/env";
 import { logger } from "./logger";
+import { redisClient } from "./redisClient";
 
 //create new auth instance
 export const auth = new AuthInstance({
@@ -84,6 +85,57 @@ auth.use("storeUser", async ({ email, hashedPassword, id, username }) => {
     });
 
     //return no error
+    return [false];
+  } catch (err) {
+    //log the error
+    logger.error(err as Error);
+
+    //return that error occured
+    return [true];
+  }
+});
+
+//use check token
+auth.use("checkToken", async ({ token }) => {
+  try {
+    //check if token exists
+    const tokenExists = await redisClient.sismember("REFRESH_TOKENS", token);
+
+    //return if token exists or not
+    return [false, Boolean(tokenExists)];
+  } catch (err) {
+    //log the error
+    logger.error(err as Error);
+
+    //return that error occured
+    return [true, null];
+  }
+});
+
+//use store token
+auth.use("storeToken", async ({ token }) => {
+  try {
+    //save token
+    await redisClient.sismember("REFRESH_TOKENS", token);
+
+    //return if token exists or not
+    return [false];
+  } catch (err) {
+    //log the error
+    logger.error(err as Error);
+
+    //return that error occured
+    return [true];
+  }
+});
+
+//use store token
+auth.use("deleteToken", async ({ token }) => {
+  try {
+    //remove token
+    await redisClient.srem("REFRESH_TOKENS", token);
+
+    //return if token exists or not
     return [false];
   } catch (err) {
     //log the error
