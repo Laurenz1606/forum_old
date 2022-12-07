@@ -129,7 +129,7 @@ auth.use("storeToken", async ({ token }) => {
   }
 });
 
-//use store token
+//use delete token
 auth.use("deleteToken", async ({ token }) => {
   try {
     //remove token
