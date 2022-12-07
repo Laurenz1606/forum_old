@@ -1,4 +1,4 @@
-import { createConnection } from "mongoose";
+import { Connection, createConnection } from "mongoose";
 import { env } from "../Utils/env";
 import { logger } from "./logger";
 
@@ -13,7 +13,7 @@ export const mongooseConnection = createConnection(
     //log create connection
     logger.info("Mongoose: Create connection to MongoDB!");
   },
-);
+) as unknown as Connection;
 
 //log that mongoose connection was created
 logger.debug("Mongoose: Connection created!");

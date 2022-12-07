@@ -1,5 +1,6 @@
 import cors from "cors";
 import express from "express";
+import { auth } from "./Components/auth";
 import { logger } from "./Components/logger";
 import { ApiRouter } from "./Routers/ApiRouter";
 import { env } from "./Utils/env";
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(cors({ origin: env("CORS", false, "*") }));
 
 //use routers
+app.use("/auth", auth.Router);
 app.use("/api", ApiRouter);
 
 //listen on APP_PORT
