@@ -1,6 +1,8 @@
 import { setConfig } from "@authfunctions/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
+// import "./index.css";
+import Router from "./Router";
 
 async function init() {
   //define default url as null
@@ -34,6 +36,7 @@ async function init() {
     );
     root.render(
       <React.StrictMode>
+        <Router />
       </React.StrictMode>,
     );
   }
