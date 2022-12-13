@@ -10,12 +10,13 @@
     "format:full": "npm run format:backend && npm run format:frontend",
     "build:backend": "cd backend && npm run build:full",
     "build:frontend": "cd frontend && npm run build:full",
-    "build:full": "npm run build:clean && npm run build:backend && npm run build:frontend",
+    "build:full": "npm run build:clean && npm run build:backend && npm run build:frontend && recursive-copy ecosystem.config.js bundle/ecosystem.config.js",
     "build:clean": "rimraf bundle",
     "dev:remove-packages": "rimraf node_modules yarn.lock package-lock.json"
   },
   "dependencies": {},
   "devDependencies": {
+    "recursive-copy-cli": "^1.0.20",
     "rimraf": "^3.0.2"
   }
 }
