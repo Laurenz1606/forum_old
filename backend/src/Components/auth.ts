@@ -116,7 +116,7 @@ auth.use("checkToken", async ({ token }) => {
 auth.use("storeToken", async ({ token }) => {
   try {
     //save token
-    await redisClient.sismember("REFRESH_TOKENS", token);
+    await redisClient.sadd("REFRESH_TOKENS", token);
 
     //return if token exists or not
     return [false];
