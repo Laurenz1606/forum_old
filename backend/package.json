@@ -10,7 +10,8 @@
     "build:copy": "rimraf ../bundle/backend/* && recursive-copy dist ../bundle/backend/dist && recursive-copy package.json ../bundle/backend/package.json",
     "build:clean": "rimraf dist",
     "build:full": "npm run build:compile && npm run build:copy && npm run build:clean",
-    "dev:start": "cross-env NODE_ENV=development ts-node-dev --require=dotenv/config --respawn --watch .env src/index.ts",
+    "console:clear": "node -e \"console.clear()\"",
+    "dev:start": "npm run console:clear && cross-env NODE_ENV=development ts-node-dev --require=dotenv/config --respawn --watch .env src/index.ts",
     "dev:format": "prettier --write --config ../.prettierrc.json src",
     "dev:remove-packages": "rimraf node_modules yarn.lock package-lock.json",
     "start": "node ."
