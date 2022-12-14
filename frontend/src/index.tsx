@@ -2,6 +2,7 @@ import { setConfig } from "@authfunctions/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import Router from "./Router";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 async function init() {
   //define default url as null

@@ -18,13 +18,16 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "bootstrap": "^5.2.3",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.5",
     "react-scripts": "5.0.1",
     "typescript": "^4.4.2"
   },
   "devDependencies": {
+    "@authfunctions/react": "^3.1.6",
     "cross-env": "^7.0.3",
     "prettier": "^2.8.0",
     "recursive-copy-cli": "^1.0.20",
