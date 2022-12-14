@@ -1,19 +1,22 @@
-import React, { FormEvent, useContext, useState } from "react";
+import React, { FormEvent, useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import slugify from "slugify";
 import AuthEmailInputComponent from "../Components/Auth/AuthEmailInputComponent";
 import AuthPasswordInputComponent from "../Components/Auth/AuthPasswordInputComponent";
 import AuthSubmitButtonComponent from "../Components/Auth/AuthSubmitButtonComponent";
-import AuthUsernameInputComponent from "../Components/Auth/AuthUsernameInputComponent";
+import AuthFullnameInputComponent from "../Components/Auth/AuthFullnameInputComponent";
 import { authContext } from "../Contexts/authContext";
 import AuthFormLayout, { IAuthError } from "../Layouts/AuthFormLayout";
+import AuthUsernameInputComponent from "../Components/Auth/AuthUsernameInputComponent";
 
 //the register page
 export default function RegisterPage() {
   //auth functions
-  const { register, login, getAuthMessage } = useContext(authContext);
+  const { register, login, fetch, getAuthMessage } = useContext(authContext);
 
   //user inputs
   const [email, setEmail] = useState("");
+  const [fullname, setFullname] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -23,6 +26,17 @@ export default function RegisterPage() {
     code: 0,
     msg: "",
   });
+
+  //update username when fullname changes
+  useEffect(() => {
+    setUsername(
+      slugify(fullname, {
+        replacement: "_",
+        lower: true,
+        strict: true,
+      }),
+    );
+  }, [fullname]);
 
   //register function
   async function onRegister(e: FormEvent<HTMLFormElement>) {
@@ -37,6 +51,7 @@ export default function RegisterPage() {
       //set error
       setError({ code, err, msg: getAuthMessage(code) });
     } else {
+
       //try and login new user
       const {
         code: code2,
@@ -46,6 +61,9 @@ export default function RegisterPage() {
 
       //set error
       setError({ code: code2, err: err2, msg: getAuthMessage(code2) });
+      
+      //update fullname
+      await fetch("/user/updateFullname", "PUT", { fullname });
 
       //navigate if needed
       return nav2();
@@ -67,10 +85,11 @@ export default function RegisterPage() {
       }
     >
       <AuthEmailInputComponent email={email} setEmail={setEmail} />
-      <AuthUsernameInputComponent
-        username={username}
-        setUsername={setUsername}
+      <AuthFullnameInputComponent
+        fullname={fullname}
+        setFullname={setFullname}
       />
+      <AuthUsernameInputComponent username={username} />
       <AuthPasswordInputComponent
         password={password}
         setPassword={setPassword}

@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { Form } from "react-bootstrap";
+import InputLabelRequiredComponent from "../InputLabelRequiredComponent";
 import AuthFormGroupComponent from "./AuthFormGroupComponent";
 
 //the props for the authEmailInput component
@@ -15,7 +16,9 @@ export default function AuthEmailInputComponent({
 }: AuthEmailInputComponentProps) {
   return (
     <AuthFormGroupComponent>
-      <Form.Label>E-Mail</Form.Label>
+      <Form.Label>
+        E-Mail <InputLabelRequiredComponent />
+      </Form.Label>
       <Form.Control
         type="email"
         placeholder="test@example.org"
@@ -25,6 +28,7 @@ export default function AuthEmailInputComponent({
         onChange={(e) => setEmail(e.target.value)}
         required
       />
+      <Form.Text>Your E-Mail connected to this account!</Form.Text>
     </AuthFormGroupComponent>
   );
 }

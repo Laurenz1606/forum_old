@@ -2,6 +2,7 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { Eye, EyeSlash } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
+import InputLabelRequiredComponent from "../InputLabelRequiredComponent";
 import AuthFormGroupComponent from "./AuthFormGroupComponent";
 
 //the props for the authPasswordInput component
@@ -25,7 +26,7 @@ export default function AuthPasswordInputComponent({
 
   return (
     <AuthFormGroupComponent>
-      <Form.Label htmlFor="password">Password</Form.Label>
+      <Form.Label htmlFor="password">Password <InputLabelRequiredComponent /></Form.Label>
       <InputGroup>
         <Form.Control
           type={showPassword ? "text" : "password"}
@@ -45,7 +46,7 @@ export default function AuthPasswordInputComponent({
       </InputGroup>
       {showResetTip ? (
         <Form.Text muted>
-          Forgot your Password? <Link to="/password/reset">Click here!</Link>
+          Forgot your Password? <Link to="/password/reset">Click here</Link>!
         </Form.Text>
       ) : (
         <Form.Text>

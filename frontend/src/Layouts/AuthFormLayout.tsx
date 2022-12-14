@@ -6,6 +6,7 @@ import React, {
   useState,
 } from "react";
 import { Alert, Card, Container, Form, ListGroup } from "react-bootstrap";
+import InputLabelRequiredComponent from "../Components/InputLabelRequiredComponent";
 import { authContext } from "../Contexts/authContext";
 
 export interface IAuthError {
@@ -58,7 +59,13 @@ export default function AuthFormLayout({
           <ListGroup variant="flush">
             <ListGroup.Item>
               {error.err ? <Alert variant="danger">{error.msg}</Alert> : ""}
-              <Form onSubmit={onSubmit}>{children}</Form>
+              <Form onSubmit={onSubmit}>
+                {children}
+                <Form.Text>
+                  All fields with an <InputLabelRequiredComponent /> are
+                  required!
+                </Form.Text>
+              </Form>
             </ListGroup.Item>
             <ListGroup.Item>
               <div className="mt-3">{secondary}</div>

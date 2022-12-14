@@ -1,30 +1,33 @@
-import React, { Dispatch, SetStateAction } from "react";
-import { Form } from "react-bootstrap";
+import React from "react";
+import { Form, InputGroup } from "react-bootstrap";
 import AuthFormGroupComponent from "./AuthFormGroupComponent";
 
 //the props for the authUsernameInput component
 type AuthUsernameInputComponentProps = {
   username: string;
-  setUsername: Dispatch<SetStateAction<string>>;
 };
 
 //the authUsernameInput component
 export default function AuthUsernameInputComponent({
   username,
-  setUsername,
 }: AuthUsernameInputComponentProps) {
   return (
     <AuthFormGroupComponent>
-      <Form.Label>Username (handle)</Form.Label>
-      <Form.Control
-        type="text"
-        placeholder="user123"
-        name="username"
-        id="username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        required
-      />
+    <Form.Label>Username (handle)</Form.Label>
+      <InputGroup>
+        <InputGroup.Text>@</InputGroup.Text>
+        <Form.Control
+          type="text"
+          placeholder="user123"
+          name="username"
+          id="username"
+          value={username}
+          required
+          readOnly
+          disabled
+        />
+      </InputGroup>
+      <Form.Text>Automatic generated name used for login and unique identification, can't be changed by the user.</Form.Text>
     </AuthFormGroupComponent>
   );
 }

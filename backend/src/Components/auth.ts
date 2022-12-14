@@ -1,4 +1,5 @@
 import { AuthInstance } from "@authfunctions/express";
+import slugify from "slugify";
 import { UserModel } from "../Models/UserModel";
 import { env } from "../Utils/env";
 import { logger } from "./logger";
@@ -81,7 +82,13 @@ auth.use("storeUser", async ({ email, hashedPassword, id, username }) => {
       email: email,
       fullname: username,
       password: hashedPassword,
-      username: username,
+      username:
+        "@" +
+        slugify(username, {
+          replacement: "_",
+          lower: true,
+          strict: true,
+        }),
     });
 
     //return no error
