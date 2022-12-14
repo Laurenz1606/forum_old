@@ -75,7 +75,7 @@ export default function RegisterPage() {
         password={password}
         setPassword={setPassword}
       />
-      <AuthSubmitButtonComponent />
+      <AuthSubmitButtonComponent>Register</AuthSubmitButtonComponent>
     </AuthFormLayout>
   );
 }
