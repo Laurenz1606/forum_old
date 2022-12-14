@@ -1,7 +1,6 @@
 import { setConfig } from "@authfunctions/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
-// import "./index.css";
 import Router from "./Router";
 
 async function init() {
