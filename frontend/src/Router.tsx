@@ -18,9 +18,7 @@ import RegisterPage from "./Pages/RegisterPage";
 type TRoute = IndexRouteProps | PathRouteProps;
 
 const routes: TRoute[] = [{ index: true, element: <DashboardPage /> }];
-const redirects: { from: string; to: string }[] = [
-  { from: "/dashboard", to: "/" },
-];
+const redirects: { from: string; to: string }[] = [];
 
 export default function Router() {
   return (
