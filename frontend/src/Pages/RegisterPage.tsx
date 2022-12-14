@@ -51,7 +51,6 @@ export default function RegisterPage() {
       //set error
       setError({ code, err, msg: getAuthMessage(code) });
     } else {
-
       //try and login new user
       const {
         code: code2,
@@ -61,7 +60,7 @@ export default function RegisterPage() {
 
       //set error
       setError({ code: code2, err: err2, msg: getAuthMessage(code2) });
-      
+
       //update fullname
       await fetch("/user/updateFullname", "PUT", { fullname });
 

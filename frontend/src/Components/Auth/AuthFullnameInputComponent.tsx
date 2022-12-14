@@ -16,7 +16,9 @@ export default function AuthFullnameInputComponent({
 }: AuthFullnameInputComponentProps) {
   return (
     <AuthFormGroupComponent>
-      <Form.Label>Fullname <InputLabelRequiredComponent /></Form.Label>
+      <Form.Label>
+        Fullname <InputLabelRequiredComponent />
+      </Form.Label>
       <Form.Control
         type="text"
         placeholder="User 123"
@@ -26,7 +28,9 @@ export default function AuthFullnameInputComponent({
         onChange={(e) => setFullname(e.target.value)}
         required
       />
-      <Form.Text>Displayed name of the user. This name can also be changed later!</Form.Text>
+      <Form.Text>
+        Displayed name of the user. This name can also be changed later!
+      </Form.Text>
     </AuthFormGroupComponent>
   );
 }

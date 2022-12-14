@@ -13,7 +13,7 @@ export default function AuthUsernameInputComponent({
 }: AuthUsernameInputComponentProps) {
   return (
     <AuthFormGroupComponent>
-    <Form.Label>Username (handle)</Form.Label>
+      <Form.Label>Username (handle)</Form.Label>
       <InputGroup>
         <InputGroup.Text>@</InputGroup.Text>
         <Form.Control
@@ -27,7 +27,10 @@ export default function AuthUsernameInputComponent({
           disabled
         />
       </InputGroup>
-      <Form.Text>Automatic generated name used for login and unique identification, can't be changed by the user.</Form.Text>
+      <Form.Text>
+        Automatic generated name used for login and unique identification, can't
+        be changed by the user.
+      </Form.Text>
     </AuthFormGroupComponent>
   );
 }

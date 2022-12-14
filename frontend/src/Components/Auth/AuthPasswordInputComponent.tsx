@@ -26,7 +26,9 @@ export default function AuthPasswordInputComponent({
 
   return (
     <AuthFormGroupComponent>
-      <Form.Label htmlFor="password">Password <InputLabelRequiredComponent /></Form.Label>
+      <Form.Label htmlFor="password">
+        Password <InputLabelRequiredComponent />
+      </Form.Label>
       <InputGroup>
         <Form.Control
           type={showPassword ? "text" : "password"}

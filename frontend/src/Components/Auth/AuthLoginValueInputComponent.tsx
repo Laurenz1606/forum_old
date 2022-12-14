@@ -16,7 +16,9 @@ export default function AuthLoginValueInputComponent({
 }: AuthLoginValueInputComponentProps) {
   return (
     <AuthFormGroupComponent>
-      <Form.Label>E-Mail or Username (handle) <InputLabelRequiredComponent /></Form.Label>
+      <Form.Label>
+        E-Mail or Username (handle) <InputLabelRequiredComponent />
+      </Form.Label>
       <Form.Control
         type="text"
         placeholder="test@example.org or @user123"
@@ -26,7 +28,10 @@ export default function AuthLoginValueInputComponent({
         onChange={(e) => setLoginValue(e.target.value)}
         required
       />
-      <Form.Text>Your E-Mail adress or unique generated Username (handle). The Username (handle) must start with an "@"!</Form.Text>
+      <Form.Text>
+        Your E-Mail adress or unique generated Username (handle). The Username
+        (handle) must start with an "@"!
+      </Form.Text>
     </AuthFormGroupComponent>
   );
 }
