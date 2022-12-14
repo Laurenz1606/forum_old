@@ -13,6 +13,7 @@ module.exports = {
         REFRESH_TOKEN_SECRET: "YOUR_REFRESH_TOKEN_SECRET",
         TOKEN_EXPIRES_IN: "YOUR_TOKEN_EXPIRES_IN",
         CORS: "YOUR_CORS",
+        FORUM_NAME: "YOUR_FORUM_NAME"
       },
     },
     {

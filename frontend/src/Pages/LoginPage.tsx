@@ -1,48 +1,66 @@
 import React, { FormEvent, useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import AuthLoginValueInputComponent from "../Components/Auth/AuthLoginValueInputComponent";
+import AuthPasswordInputComponent from "../Components/Auth/AuthPasswordInputComponent";
+import AuthSubmitButtonComponent from "../Components/Auth/AuthSubmitButtonComponent";
 import { authContext } from "../Contexts/authContext";
+import AuthFormLayout, { IAuthError } from "../Layouts/AuthFormLayout";
 
 //the login page
 export default function LoginPage() {
-  const { login } = useContext(authContext);
+  //auth functions
+  const { login, getAuthMessage } = useContext(authContext);
 
+  //user inputs
   const [loginValue, setLoginValue] = useState("");
   const [password, setPassword] = useState("");
 
-  const [error, setError] = useState<number>();
+  //auth error
+  const [error, setError] = useState<IAuthError>({
+    err: false,
+    code: 0,
+    msg: "",
+  });
 
+  //login function
   async function onLogin(e: FormEvent<HTMLFormElement>) {
+    //prevent default form action
     e.preventDefault();
 
+    //login user
     const { code, err, nav } = await login({ login: loginValue, password });
 
+    //check if login errored
     if (err) {
-      setError(code);
+      //set error
+      setError({ code, err, msg: getAuthMessage(code) });
     }
 
+    //navigate if needed
     nav();
   }
 
   return (
-    <div>
-      <h1>Login</h1>
-      <Link to="/register">Register</Link>
-      <form onSubmit={onLogin}>
-        <input
-          type="text"
-          placeholder="Email oder Benutzername"
-          value={loginValue}
-          onChange={(e) => setLoginValue(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Passwort"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Login</button>
-      </form>
-      {error ? error : ""}
-    </div>
+    <AuthFormLayout
+      error={error}
+      onSubmit={onLogin}
+      page="Login"
+      secondary={
+        <span>
+          Don't have an Account? <Link to="/register">Register here</Link>
+        </span>
+      }
+    >
+      <AuthLoginValueInputComponent
+        loginValue={loginValue}
+        setLoginValue={setLoginValue}
+      />
+      <AuthPasswordInputComponent
+        password={password}
+        setPassword={setPassword}
+        showResetTip
+      />
+      <AuthSubmitButtonComponent />
+    </AuthFormLayout>
   );
 }

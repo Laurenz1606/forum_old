@@ -25,12 +25,21 @@ export type AuthContextType = {
   login: LoginFunction;
   logout: LogoutFunction;
   register: RegisterFunction;
+  getAuthMessage: (code: number) => string;
 };
 
 //the auth context
 export const authContext = createContext<AuthContextType>(
   {} as AuthContextType,
 );
+
+//get auth message by auth code
+function getAuthMessage(code: number): string {
+  //all error messages
+  const ERROR_MESSAGES: { [key: number]: string } = {};
+
+  return ERROR_MESSAGES[code] ? ERROR_MESSAGES[code] : "Unknown Error!";
+}
 
 //the component providing the auth context
 export default function AuthContext({ children }: AuthContextProps) {
@@ -52,6 +61,7 @@ export default function AuthContext({ children }: AuthContextProps) {
         login,
         logout,
         register,
+        getAuthMessage: getAuthMessage,
       }}
     >
       {children}
