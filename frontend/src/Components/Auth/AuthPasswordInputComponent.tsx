@@ -48,7 +48,10 @@ export default function AuthPasswordInputComponent({
           Forgot your Password? <Link to="/password/reset">Click here!</Link>
         </Form.Text>
       ) : (
-        ""
+        <Form.Text>
+          Password must contain 1 uppercase letter, 1 lowercase letter, 1
+          number, 1 special character and must be at least 8 characters long!
+        </Form.Text>
       )}
     </AuthFormGroupComponent>
   );
