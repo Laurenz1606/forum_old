@@ -60,7 +60,7 @@ export default function LoginPage() {
         setPassword={setPassword}
         showResetTip
       />
-      <AuthSubmitButtonComponent />
+      <AuthSubmitButtonComponent>Login</AuthSubmitButtonComponent>
     </AuthFormLayout>
   );
 }
