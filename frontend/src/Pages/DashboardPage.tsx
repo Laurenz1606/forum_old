@@ -4,7 +4,7 @@ import { authContext } from "../Contexts/authContext";
 //the dashboard page
 export default function DashboardPage() {
   const { logout, fetch } = useContext(authContext);
-  const [data, setData] = useState<any>({data: {data: {}}});
+  const [data, setData] = useState<any>({ data: { data: {} } });
 
   const [error, setError] = useState<number>();
 
