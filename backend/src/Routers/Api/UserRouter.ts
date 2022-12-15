@@ -24,7 +24,7 @@ UserRouter.get("/infos", auth.validateMiddleware, async (req, res) => {
       return sendData<IInfos>(res, 404, { err: true, code: 1, data: null });
 
     //send user info to frontend
-    return sendData<IInfos>(res, 500, {
+    return sendData<IInfos>(res, 200, {
       err: false,
       code: 0,
       data: {
