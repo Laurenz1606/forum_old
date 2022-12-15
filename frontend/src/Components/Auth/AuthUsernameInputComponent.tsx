@@ -1,5 +1,6 @@
-import React from "react";
-import { Form, InputGroup } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Button, Form, InputGroup } from "react-bootstrap";
+import useCopy from "../../Hooks/useCopy";
 import AuthFormGroupComponent from "./AuthFormGroupComponent";
 
 //the props for the authUsernameInput component
@@ -11,6 +12,19 @@ type AuthUsernameInputComponentProps = {
 export default function AuthUsernameInputComponent({
   username,
 }: AuthUsernameInputComponentProps) {
+  //copy hook
+  const copy = useCopy();
+
+  //copy state
+  const [copied, setCopied] = useState(false);
+
+  //trigger interval
+  useEffect(() => {
+    setTimeout(() => {
+      setCopied(false)
+    }, 3000)
+  }, [copied])
+
   return (
     <AuthFormGroupComponent>
       <Form.Label>Username (handle)</Form.Label>
@@ -24,8 +38,16 @@ export default function AuthUsernameInputComponent({
           value={username}
           required
           readOnly
-          disabled
         />
+        <Button
+          variant="primary"
+          onClick={() => {
+            copy("@" + username);
+            setCopied(true);
+          }}
+        >
+          {copied ? "Copied" : "Copy"}!
+        </Button>
       </InputGroup>
       <Form.Text>
         Automatic generated name used for login and unique identification, can't

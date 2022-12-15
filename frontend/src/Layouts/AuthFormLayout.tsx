@@ -50,29 +50,38 @@ export default function AuthFormLayout({
   }, [fetch]);
 
   return (
-    <Container style={{ paddingTop: "20vh" }}>
-      <h1 className="text-center mb-2">
-        {page} to {name} Forum
-      </h1>
-      <Card>
-        <Card.Body>
-          <ListGroup variant="flush">
-            <ListGroup.Item>
-              {error.err ? <Alert variant="danger">{error.msg}</Alert> : ""}
-              <Form onSubmit={onSubmit}>
-                {children}
-                <Form.Text>
-                  All fields with an <InputLabelRequiredComponent /> are
-                  required!
-                </Form.Text>
-              </Form>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <div className="mt-3">{secondary}</div>
-            </ListGroup.Item>
-          </ListGroup>
-        </Card.Body>
-      </Card>
+    <Container
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <div>
+        <h1 className="text-center mb-2">
+          {page} to {name} Forum
+        </h1>
+        <Card>
+          <Card.Body>
+            <ListGroup variant="flush">
+              <ListGroup.Item>
+                {error.err ? <Alert variant="danger">{error.msg}</Alert> : ""}
+                <Form onSubmit={onSubmit}>
+                  {children}
+                  <Form.Text>
+                    All fields with an <InputLabelRequiredComponent /> are
+                    required!
+                  </Form.Text>
+                </Form>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <div className="mt-3">{secondary}</div>
+              </ListGroup.Item>
+            </ListGroup>
+          </Card.Body>
+        </Card>
+      </div>
     </Container>
   );
 }
