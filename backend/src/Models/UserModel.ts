@@ -1,13 +1,21 @@
 import { Schema } from "mongoose";
 import { mongooseConnection } from "../Components/mongoose";
 
-//the interface for a user
-export interface IUser {
+//the interface for the basic info of a user
+export interface IUserBasic {
   _id: string;
   username: string;
+}
+
+//the interface for the public info of a user
+export interface IUserPublic extends IUserBasic {
   email: string;
-  password: string;
   fullname: string;
+}
+
+//the interface for a user
+export interface IUser extends IUserPublic {
+  password: string;
 }
 
 //the user schema
