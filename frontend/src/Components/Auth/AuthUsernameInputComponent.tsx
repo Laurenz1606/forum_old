@@ -21,9 +21,9 @@ export default function AuthUsernameInputComponent({
   //trigger interval
   useEffect(() => {
     setTimeout(() => {
-      setCopied(false)
-    }, 3000)
-  }, [copied])
+      setCopied(false);
+    }, 3000);
+  }, [copied]);
 
   return (
     <AuthFormGroupComponent>
